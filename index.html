@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fahril Moonstar — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Orbitron', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    :root {
+      --hitam: #05070F;
+      --gelap: #0F111A;
+      --abu: #1A1D2B;
+      --abu-terang: #6B7280;
+      --biru-neon: #00F0FF;
+      --ungu-neon: #A855FF;
+      --merah-neon: #FF2D55;
+      --teks: #E0E0E8;
+      --garis-neon: rgba(0, 240, 255, 0.15);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--hitam);
+      color: var(--teks);
+      min-height: 100vh;
+      line-height: 1.7;
+      padding: 2rem 1.5rem;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(transparent 50%, rgba(0, 240, 255, 0.02) 50%),
+        radial-gradient(circle at top right, rgba(168, 85, 255, 0.08), transparent 55%),
+        radial-gradient(circle at bottom left, rgba(0, 240, 255, 0.06), transparent 55%);
+      background-size: 100% 4px, 100% 100%, 100% 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6rem;
+      padding-top: 1rem;
+      border-bottom: 1px solid var(--garis-neon);
+      padding-bottom: 1.5rem;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--biru-neon);
+      text-shadow: 0 0 12px rgba(0, 240, 255, 0.4);
+    }
+
+    nav {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: var(--abu-terang);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: all 0.3s;
+      position: relative;
+      letter-spacing: 0.05em;
+    }
+
+    nav a:hover {
+      color: var(--biru-neon);
+      text-shadow: 0 0 8px rgba(0, 240, 255, 0.5);
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--biru-neon);
+      transition: width 0.3s;
+      box-shadow: 0 0 6px rgba(0, 240, 255, 0.4);
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .hero {
+      margin-bottom: 8rem;
+      position: relative;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      line-height: 1.2;
+      margin-bottom: 2rem;
+      background: linear-gradient(135deg, var(--biru-neon), var(--ungu-neon));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 25px rgba(0, 240, 255, 0.2));
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: #9CA3AF;
+      max-width: 600px;
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+    }
+
+    .btn {
+      display: inline-block;
+      background: transparent;
+      color: var(--biru-neon);
+      border: 1px solid var(--biru-neon);
+      padding: 0.85rem 2.2rem;
+      border-radius: 2px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+      letter-spacing: 0.08em;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+
+    .btn:hover {
+      background: rgba(0, 240, 255, 0.08);
+      box-shadow: 0 0 18px rgba(0, 240, 255, 0.3), inset 0 0 12px rgba(0, 240, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .btn:hover::before {
+      left: 100%;
+    }
+
+    section {
+      margin-bottom: 7rem;
+      position: relative;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--biru-neon);
+      margin-bottom: 1rem;
+      opacity: 0.7;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+      color: var(--teks);
+    }
+
+    .about h2 {
+      font-size: 2.2rem;
+      line-height: 1.3;
+      margin-bottom: 1.5rem;
+    }
+
+    .about p {
+      color: #9CA3AF;
+      font-size: 1rem;
+      max-width: 650px;
+      line-height: 1.9;
+      margin-bottom: 2rem;
+    }
+
+    .timeline-block {
+      margin-bottom: 3rem;
+      border-left: 1px solid var(--garis-neon);
+      padding-left: 1.5rem;
+    }
+
+    .timeline-item {
+      padding: 1.2rem 0;
+      border-bottom: 1px solid var(--abu);
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -1.5rem;
+      top: 1.6rem;
+      width: 8px;
+      height: 8px;
+      background: var(--biru-neon);
+      transform: rotate(45deg);
+      box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+    }
+
+    .timeline-item h3 {
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+      color: var(--teks);
+    }
+
+    .timeline-item p {
+      font-size: 0.85rem;
+      color: var(--abu-terang);
+    }
+
+    .timeline-item .tahun {
+      font-size: 0.75rem;
+      color: var(--biru-neon);
+      opacity: 0.6;
+      margin-top: 0.3rem;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin: 2rem 0 4rem;
+    }
+
+    .stat-card {
+      text-align: center;
+      padding: 1.5rem;
+      border: 1px solid var(--abu);
+      background: rgba(15, 17, 26, 0.6);
+      transition: all 0.3s;
+    }
+
+    .stat-card:hover {
+      border-color: var(--biru-neon);
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.1);
+    }
+
+    .stat-num {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--biru-neon);
+      text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--abu-terang);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+
+    .music h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .music p.desc {
+      color: var(--abu-terang);
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+    }
+
+    .music-sub {
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 1rem;
+    }
+
+    .music-sub span {
+      color: var(--biru-neon);
+    }
+
+    .song-list {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--abu);
+      background: rgba(15, 17, 26, 0.4);
+    }
+
+    .song-item {
+      display: flex;
+      align-items: center;
+      padding: 0.9rem 1.2rem;
+      border-bottom: 1px solid var(--abu);
+      transition: background 0.2s, padding-left 0.2s;
+    }
+
+    .song-item:last-child {
+      border-bottom: none;
+    }
+
+    .song-item:hover {
+      background: rgba(0, 240, 255, 0.03);
+      padding-left: 1.5rem;
+    }
+
+    .song-num {
+      width: 30px;
+      font-size: 0.8rem;
+      color: var(--biru-neon);
+      opacity: 0.5;
+      flex-shrink: 0;
+    }
+
+    .song-info {
+      flex: 1;
+    }
+
+    .song-title {
+      font-size: 0.9rem;
+      color: var(--teks);
+    }
+
+    .song-artist {
+      font-size: 0.75rem;
+      color: var(--abu-terang);
+    }
+
+    .song-duration {
+      font-size: 0.8rem;
+      color: var(--biru-neon);
+      opacity: 0.6;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--abu);
+      flex-wrap: wrap;
+    }
+
+    .tab {
+      padding: 0.7rem 0;
+      font-size: 0.9rem;
+      color: var(--abu-terang);
+      cursor: pointer;
+      border-bottom: 1px solid transparent;
+      transition: all 0.3s;
+      letter-spacing: 0.05em;
+      background: none;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      font-family: inherit;
+    }
+
+    .tab.aktif {
+      color: var(--biru-neon);
+      border-bottom-color: var(--biru-neon);
+      text-shadow: 0 0 6px rgba(0, 240, 255, 0.3);
+    }
+
+    .tab:hover:not(.aktif) {
+      color: var(--ungu-neon);
+      border-bottom-color: var(--ungu-neon);
+    }
+
+    .tab:focus-visible {
+      outline: 1px solid var(--biru-neon);
+      outline-offset: 4px;
+    }
+
+    .projects-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      padding: 1.5rem;
+      border: 1px solid var(--abu);
+      background: rgba(15, 17, 26, 0.5);
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 3px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--biru-neon), var(--ungu-neon));
+      box-shadow: 0 0 8px rgba(0, 240, 255, 0.3);
+    }
+
+    .project-card:hover {
+      border-color: var(--biru-neon);
+      transform: translateX(4px);
+      box-shadow: 4px 0 15px rgba(0, 240, 255, 0.05);
+    }
+
+    .project-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: var(--biru-neon);
+    }
+
+    .project-card p {
+      font-size: 0.85rem;
+      color: var(--abu-terang);
+      line-height: 1.7;
+    }
+
+    .social-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .social-links a {
+      color: var(--teks);
+      text-decoration: none;
+      font-size: 0.95rem;
+      padding: 0.8rem 1rem;
+      border: 1px solid transparent;
+      transition: all 0.3s;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .social-links a span:last-child {
+      color: var(--abu-terang);
+      font-size: 0.85rem;
+      text-align: right;
+      word-break: break-all;
+    }
+
+    .social-links a:hover {
+      border-color: var(--biru-neon);
+      color: var(--biru-neon);
+      background: rgba(0, 240, 255, 0.03);
+      padding-left: 1.2rem;
+    }
+
+    footer {
+      margin-top: 8rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--garis-neon);
+      text-align: center;
+      color: var(--abu-terang);
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+    }
+
+    .tech-tag {
+      background: linear-gradient(135deg, rgba(0, 240, 255, 0.08), rgba(168, 85, 255, 0.08));
+      border: 1px solid rgba(0, 240, 255, 0.3);
+      padding: 0.55rem 1.1rem;
+      font-size: 0.85rem;
+      color: var(--teks);
+      transition: all 0.3s;
+    }
+
+    .tech-tag:hover {
+      border-color: var(--biru-neon);
+      box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+    }
+
+    .cert-badge {
+      border: 1px solid var(--biru-neon);
+      text-align: center;
+      padding: 1.5rem;
+      background: rgba(15, 17, 26, 0.6);
+    }
+
+    .cert-badge h4 {
+      color: var(--biru-neon);
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .cert-badge p {
+      font-size: 0.75rem;
+      color: var(--abu-terang);
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 1.5rem 1rem; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      header { margin-bottom: 3rem; }
+      section { margin-bottom: 4rem; }
+      .hero { margin-bottom: 4rem; }
+      footer { margin-top: 4rem; }
+      nav { gap: 1rem; }
+      nav a { font-size: 0.8rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header>
+      <div class="logo">FAHRILMOONSTAR.</div>
+      <nav>
+        <a href="#about">ABOUT</a>
+        <a href="#projects">PROJECTS</a>
+        <a href="#contact">FIND ME</a>
+      </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <h1>SYSTEM ONLINE.<br>WELCOME TO MY PORTAL.</h1>
+      <p>Halo! Saya Fahril Moonstar — Developer yang tertarik membangun antarmuka masa depan. Menggabungkan kode, desain futuristik, dan teknologi modern untuk menciptakan pengalaman digital yang unik, cepat, dan berkesan. Siap mewujudkan ide kamu ke dalam bentuk digital.</p>
+      <a href="#projects" class="btn">LIHAT PROJEK →</a>
+    </section>
+
+    <!-- About Me -->
+    <section class="about" id="about">
+      <p class="section-label">// IDENTITY</p>
+      <h2>HI, I'M<br>FAHRIL MOONSTAR</h2>
+      <p>Saya adalah <strong>Fullstack Developer &amp; Digital Creator</strong> yang berfokus pada pengembangan aplikasi web, antarmuka futuristik, dan solusi digital yang efisien. Saya senang bereksperimen dengan teknologi terkini — dari frontend yang memukau hingga sistem backend yang stabil.<br><br>Prinsip saya: kode yang rapi + desain yang berkarakter = produk yang berdampak. Selalu belajar, selalu berkembang.</p>
+      <a href="#projects" class="btn">JELAJAHI KARYA →</a>
+    </section>
+
+    <!-- Education -->
+    <section>
+      <p class="section-label">// EDUCATION</p>
+      <div class="timeline-block">
+        <div class="timeline-item">
+          <h3>SMA DDI BABUSSALAM</h3>
+          <p>pesantren babussalam ddi kassi</p>
+          <p class="tahun">2024 — 2026</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience & Stats -->
+    <section>
+      <p class="section-label">// EXPERIENCE</p>
+      <div class="timeline-block">
+        <div class="timeline-item">
+          <h3>Universitas PBS</h3>
+          <p>member; IT Support</p>
+        </div>
+        <div class="timeline-item">
+          <h3>Fahril Moonstar Studio</h3>
+          <p>Freelance Web Developer &amp; UI Designer</p>
+        </div>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-num">8+</div>
+          <div class="stat-label">Projects</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">5</div>
+          <div class="stat-label">Certificates</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">∞</div>
+          <div class="stat-label">Ideas</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">2+</div>
+          <div class="stat-label">Years Exp</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Music Section -->
+    <section class="music">
+      <h2>SYNC. MODE: CREATIVE.</h2>
+      <p class="desc">Musik yang menemani saat saya menulis kode &amp; mendesain. Ritme = fokus, melodi = ide.</p>
+
+      <p class="music-sub">Daily Rotation di <span>Spotify</span> • <span>FahrilMoonstar · Coding Vibes</span></p>
+
+      <div class="song-list">
+        <div class="song-item">
+          <div class="song-num">01</div>
+          <div class="song-info">
+            <div class="song-title">Midnight City</div>
+            <div class="song-artist">M83</div>
+          </div>
+          <div class="song-duration">04:03</div>
+        </div>
+        <div class="song-item">
+          <div class="song-num">02</div>
+          <div class="song-info">
+            <div class="song-title">Blade Runner Blues</div>
+            <div class="song-artist">Vangelis</div>
+          </div>
+          <div class="song-duration">04:58</div>
+        </div>
+        <div class="song-item">
+          <div class="song-num">03</div>
+          <div class="song-info">
+            <div class="song-title">Cyberpunk</div>
+            <div class="song-artist">2077 OST</div>
+          </div>
+          <div class="song-duration">03:42</div>
+        </div>
+        <div class="song-item">
+          <div class="song-num">04</div>
+          <div class="song-info">
+            <div class="song-title">Midnight Cruising</div>
+            <div class="song-artist">Neon Rider</div>
+          </div>
+          <div class="song-duration">05:10</div>
+        </div>
+        <div class="song-item">
+          <div class="song-num">05</div>
+          <div class="song-info">
+            <div class="song-title">Electric Heart</div>
+            <div class="song-artist">Synthwave Nation</div>
+          </div>
+          <div class="song-duration">04:22</div>
+        </div>
+        <div class="song-item">
+          <div class="song-num">06</div>
+          <div class="song-info">
+            <div class="song-title">Teknologi Cinta</div>
+            <div class="song-artist">Nadin Amizah</div>
+          </div>
+          <div class="song-duration">04:15</div>
+        </div>
+        <div class="song-item">
+          <div class="song-num">07</div>
+          <div class="song-info">
+            <div class="song-title">Langit Tak Bertepi</div>
+            <div class="song-artist">Hindia</div>
+          </div>
+          <div class="song-duration">03:58</div>
+        </div>
+        <div class="song-item">
+          <div class="song-num">08</div>
+          <div class="song-info">
+            <div class="song-title">Malam Biru</div>
+            <div class="song-artist">Tulus</div>
+          </div>
+          <div class="song-duration">03:35</div>
+        </div>
+        <div class="song-item">
+          <div class="song-num">09</div>
+          <div class="song-info">
+            <div class="song-title">Cahaya Di Ujung Malam</div>
+            <div class="song-artist">Sheila On 7</div>
+          </div>
+          <div class="song-duration">04:02</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio / Projects -->
+    <section id="projects">
+      <p class="section-label">// PORTFOLIO</p>
+
+      <div class="tabs" role="tablist" aria-label="Portfolio">
+        <button class="tab aktif" role="tab" aria-selected="true" data-tab="projects">PROJECTS</button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="certificates">CERTIFICATES</button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="achievements">ACHIEVEMENTS</button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="techstack">TECH STACK</button>
+      </div>
+
+      <div id="tab-content">
+        <!-- Projects -->
+        <div class="tab-pane" id="projects-pane">
+          <div class="projects-grid">
+            <div class="project-card">
+              <h3>🌐 FAHRIL MOONSTAR — ALL TOOLS</h3>
+              <p>Platform terintegrasi berisi kumpulan alat bantu digital: link shortener, bypass tool, generator teks, dan utilitas pengembang lainnya. Dibuat dengan antarmuka cyberpunk yang cepat dan responsif.</p>
+            </div>
+            <div class="project-card">
+              <h3>🤖 AI CONTENT GENERATOR</h3>
+              <p>Aplikasi otomatisasi pembuatan konten berbasis AI. Mendukung artikel, caption media sosial, dan deskripsi produk. Dilengkapi panel admin untuk manajemen konten yang efisien.</p>
+            </div>
+            <div class="project-card">
+              <h3>📊 DASHBOARD DATA CENTER</h3>
+              <p>Sistem manajemen data terpusat dengan visualisasi statistik real-time, filter data canggih, dan ekspor laporan dalam berbagai format. Antarmuka futuristik yang mudah digunakan.</p>
+            </div>
+            <div class="project-card">
+              <h3>🔗 BYPASS LINK TOOL</h3>
+              <p>Alat untuk mempermudah akses tautan dengan antarmuka minimalis dan cepat. Mendukung berbagai jenis layanan tautan. Dihosting di Vercel untuk akses global yang stabil.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Certificates -->
+        <div class="tab-pane" id="certificates-pane" style="display:none;">
+          <p style="color:var(--abu-terang); padding:1rem 0;">📜 5 Sertifikat — akan ditampilkan di sini</p>
+          <div style="display:flex; flex-wrap:wrap; gap:1rem; margin-top:1rem;">
+            <div class="cert-badge" style="border-color: var(--biru-neon);">
+              <h4>Web Development</h4>
+              <p>Certiport · 2025</p>
+            </div>
+            <div class="cert-badge" style="border-color: var(--ungu-neon);">
+              <h4 style="color: var(--ungu-neon);">JavaScript Basics</h4>
+              <p>Sololearn · 2025</p>
+            </div>
+            <div class="cert-badge" style="border-color: var(--biru-neon);">
+              <h4>UI/UX Design</h4>
+              <p>Coursera · 2026</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Achievements -->
+    
+        <!-- Tech Stack -->
+        <div class="tab-pane" id="techstack-pane" style="display:none;">
+          <p style="color:var(--abu-terang); font-size:0.85rem; margin-bottom:1rem;">Teknologi yang saya gunakan sehari-hari:</p>
+          <div style="display:flex; flex-wrap:wrap; gap:0.8rem; padding:1rem 0;">
+            <span class="tech-tag">HTML5</span>
+            <span class="tech-tag">CSS3</span>
+            <span class="tech-tag">JavaScript</span>
+            <span class="tech-tag">React</span>
+            <span class="tech-tag">Node.js</span>
+            <span class="tech-tag">Three.js</span>
+            <span class="tech-tag">Vercel</span>
+            <span class="tech-tag">Git</span>
+            <span class="tech-tag">Figma</span>
+            <span class="tech-tag">Tailwind</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Find Me / Contact -->
+    <section id="contact">
+      <p class="section-label">// CONNECT</p>
+      <h2>FIND ME ONLINE</h2>
+      <div class="social-links">
+        <a href="❎" target="_blank" rel="noopener noreferrer">
+          <span>INSTAGRAM</span>
+          <span>❎</span>
+        </a>
+        <a href="tiktok.com/@fahrilpreseteditor" target="_blank" rel="noopener noreferrer">
+          <span>TIKTOK</span>
+          <span>@fahrilpreseteditor</span>
+        </a>
+        <a href="private" target="_blank" rel="noopener noreferrer">
+          <span>GITHUB</span>
+          <span>private</span>
+        </a>
+        <a href="https://www.mediafire.com/file/2uq1dza9ovoil3f/all+tools+fahril_1.apk/file" target="_blank" rel="noopener noreferrer">
+          <span>APK</span>
+          <span>https://www.mediafire.com/file/2uq1dza9ovoil3f/all+tools+fahril_1.apk/file</span>
+        </a>
+        <a href="mailto:moonstarstore001@gmail.com">
+          <span>EMAIL</span>
+          <span>moonstarstore001@gmail.com</span>
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 FAHRIL MOONSTAR · FAHRIL MOONSTAR STUDIO</p>
+      <p style="margin-top:0.5rem; font-size:0.65rem;">SYSTEM VERSION: 2.0.1 // CYBERPUNK EDITION</p>
+    </footer>
+  </div>
+
+  <script>
+    // ===== Tab Switching =====
+    const tabs = document.querySelectorAll('.tab');
+    const tabPanes = document.querySelectorAll('.tab-pane');
+
+    function activateTab(tab) {
+      tabs.forEach(t => {
+        t.classList.remove('aktif');
+        t.setAttribute('aria-selected', 'false');
+      });
+      tab.classList.add('aktif');
+      tab.setAttribute('aria-selected', 'true');
+
+      tabPanes.forEach(pane => (pane.style.display = 'none'));
+      const target = document.getElementById(tab.dataset.tab + '-pane');
+      if (target) target.style.display = 'block';
+    }
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => activateTab(tab));
+      tab.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          activateTab(tab);
+        }
+      });
+    });
+
+    // ===== Smooth scroll untuk anchor internal =====
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (!href || href === '#') return;
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          const y = target.getBoundingClientRect().top + window.pageYOffset - 30;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }
+      });
+    });
+
+    // ===== Animasi reveal saat scroll =====
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -30px 0px' }
+    );
+
+    document.querySelectorAll('section').forEach(sec => {
+      sec.style.opacity = '0';
+      sec.style.transform = 'translateY(20px)';
+      sec.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(sec);
+    });
+  </script>
+</body>
+</html>
